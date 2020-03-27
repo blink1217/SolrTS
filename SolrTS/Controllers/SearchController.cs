@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SolrTS.Database;
+using SolrTS.Models;
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SolrTS.Controllers
 {
@@ -26,6 +29,25 @@ namespace SolrTS.Controllers
             //This is not a good way to search!!
             var person = _solrContext.Persons.Where(e => e.Name.Contains(Query)).FirstOrDefault();
             return Json(person);
+        }
+
+        [Route("add/{Name}")]
+        public async Task<IActionResult> Add(string Name)
+        {
+            var id = _solrContext.Persons.Count() + 1;
+
+            var newPerson = new Person
+            {
+                Id = "PX" + id,
+                Name = Name,
+                Group = "Red",
+                JoinDate = DateTime.Now
+            };
+
+            _solrContext.Persons.Add(newPerson);
+            await _solrContext.SaveChangesAsync();
+
+            return Json(newPerson);
         }
     }
 }

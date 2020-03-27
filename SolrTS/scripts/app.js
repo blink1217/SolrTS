@@ -7,12 +7,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-function SearchMeButton() {
+function SearchMe() {
     return __awaiter(this, void 0, void 0, function* () {
         var term = document.getElementById("SearchBox").value;
         const response = yield fetch("https://localhost:5001/lookup/" + term);
         var results = yield response.json();
-        document.getElementById("SearchResults").innerHTML = results.name;
+        document.getElementById("SearchResults").innerHTML = "Found " + results.name;
+    });
+}
+function AddMeButton() {
+    return __awaiter(this, void 0, void 0, function* () {
+        var name = document.getElementById("AddMe").value;
+        const response = yield fetch("https://localhost:5001/add/" + name);
+        var results = yield response.json();
+        if (results !== undefined) {
+            document.getElementById("AddResults").innerHTML = "Added " + name;
+        }
     });
 }
 //# sourceMappingURL=app.js.map
