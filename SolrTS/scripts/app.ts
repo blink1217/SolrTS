@@ -15,10 +15,6 @@ async function AddMeButton() {
     var name = (<HTMLInputElement>document.getElementById("AddMe")).value;
     const response = await fetch(
         "https://localhost:5001/add/" + name
+        , { method: 'put' }
     );
-    var results = await response.json();
-
-    if (results !== undefined) {
-        document.getElementById("AddResults").innerHTML = "Added " + name;
-    }
 }

@@ -26,7 +26,7 @@ namespace SolrTS.Controllers
             //but since I'm not going through the trouble of setting one up and writing all the code you will have to imagine it
             //https://solr-express.gitbook.io/docs/tutorials/getting-started
 
-            //This is not a good way to search!!
+            //This is not a good way to search!! It does not scale well and is expensive.
             var person = _solrContext.Persons.Where(e => e.Name.Contains(Query)).FirstOrDefault();
             return Json(person);
         }

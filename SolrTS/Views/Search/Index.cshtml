@@ -1,22 +1,36 @@
-﻿@{ 
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="py-5 text-center" >
+     <h1>Search Me</h1>
+     </div>
+    <div class="row">
+        
+        <div class="col-md-4 order-md-1 mb-4">
 
-<h1>Search Me</h1>
+        </div>
+        <div class="col-md-4 order-md-2 mb-4">
+            
 
-<input type="text" id="SearchBox" onkeyup="SearchMe()"/>
-
-
-<div style="margin:1em; font:bold;" id="SearchResults">
-
-</div>
+            <input type="text" id="SearchBox" class="form-control" onkeyup="SearchMe()" placeholder="Type Name to Search" />
 
 
-<h1>Add Me</h1>
-<input type="text" id="AddMe" />
-<button style="margin:1em;" onclick="AddMeButton()" >Add</button>
+            <div style="margin:1em; font:bold;" id="SearchResults">
+                Search Results Appear here.
+            </div>
 
-<div style="margin:1em; font:bold;" id="AddResults">
+            <form class="card p-2">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="AddMe" placeholder="Type Name">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" onclick="AddMeButton()">Add</button>
+                    </div>
+                </div>
+            </form>
 
-</div>
+            <div style="margin:1em; font:bold;" id="AddResults">
+                Click above to add users.
+            </div>
+        </div>
+    </div>
 
